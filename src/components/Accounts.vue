@@ -1,12 +1,12 @@
 <template>
   <div class="accounts-container">
-    <h1>{{ message }}</h1>
-    <accountsList :accounts="accounts"></accountsList>
+    <h1 class="content-header">{{ message }}</h1>
+    <accountOverview v-for="account in accounts" :account="account"></accountOverview>
   </div>
 </template>
 
 <script>
-import accountsList from './accountsList.vue'
+import accountOverview from './accountOverview.vue'
 
 export default {
   name: 'Accounts',
@@ -23,7 +23,7 @@ export default {
     })
   },
   components: {
-    accountsList
+    accountOverview
   }
 }
 </script>
@@ -31,9 +31,16 @@ export default {
 <style lang="scss">
   .accounts-container {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-      "header",
-      "account1",
-      "account2"
+        "content-header content-header"
+        "account-1 account-2";
+    grid-gap: 1rem;
+    grid-auto-rows: minmax(50px auto);
+    .content-header {
+      grid-area: content-header;
+      margin: 0;
+      text-align: center;
+    }
   }
 </style>

@@ -17,14 +17,13 @@ export default {
   created () {
     this.$http.get('http://localhost:3001/accounts/' + this.account.id + '/previousTransactions').then(response => {
       this.previousTransactions = response.data
-      console.log(response.data)
     })
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .account {
-  margin: 25px;
+
 }
 </style>
